@@ -1,0 +1,41 @@
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/all.min.js') }}"></script>
+<script src="/js/htm2pdf.bundlemin.js"></script>
+<script src="/js/script.js"></script>
+<script src="{{ asset('table/datatables.min.js') }}"></script>
+ 
+<script>
+    $(function(){ 
+        setTimeout(() => {
+             $('.alert').hide();
+        }, 3000);
+    //     let $materiel_type = $('#materiel_type');
+    //     $($materiel_type).change(function(){ 
+    //         let form = $(this).closest('form');
+    //         let data = {};
+    //         data[$materiel_type.attr['name']] = $materiel_type.val();
+    //         // console.log($materiel_type.val());
+    //         // console.log(data);
+
+    //         $.post($form.attr['action'], data).then((response) => {
+    //             $("#materiel_sousType").replaceWith(
+    //                 $(response).find("#materiel_sousType");
+    //             );
+    //         });
+    //         console.log($("#materiel_sousType").val());
+    //     });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var table = $('#example').DataTable( {
+            lengthChange: false,
+            buttons: [ 'excel', 'pdf' ]
+        } );
+     
+        table.buttons().container()
+            .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+
+        $("#departement_contactDept").removeAttr("required");
+    } );
+  </script>
