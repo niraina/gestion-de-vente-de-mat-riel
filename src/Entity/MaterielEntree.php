@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MaterielEntreeRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MaterielEntreeRepository::class)
@@ -19,6 +20,7 @@ class MaterielEntree
 
     /**
      * @ORM\Column(type="integer")
+     *  @Assert\Length(min=14,minMessage="La quantité minimum est 0")
      */
     private $qteEntree;
 

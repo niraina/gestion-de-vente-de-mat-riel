@@ -32,6 +32,7 @@ class Materiel
     /**
      * @ORM\Column(type="integer")
      * @Groups({"materiel_read"})
+     *  @Assert\Length(min=14,minMessage="La quantité minimum est 0")
      */
     private $qte;
 
@@ -50,6 +51,7 @@ class Materiel
     /**
      * @ORM\Column(type="float")
      * @Groups({"materiel_read"})
+     *  @Assert\Length(min=14,minMessage="La quantité minimum est 0")
      */
     private $prixUnitaire;
 

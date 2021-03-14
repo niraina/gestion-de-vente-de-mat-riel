@@ -29,7 +29,7 @@ class Categorie
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      * @Groups({"categorie_read","materiel_read"})
      */
     private $reference;
