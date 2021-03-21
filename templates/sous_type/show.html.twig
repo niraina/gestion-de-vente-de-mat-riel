@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des matériels{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h3 class="text-center mt-3">Liste des matériels</h3>
+        
+        <table class="table" id="example">
+            <thead>
+                <tr>
+                    <th>Nom du fournisuer</th>
+                    <th>Nom/Marque</th>
+                    <th>Type matériel</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+               {% for categorie in categories %}
+                    <tr>
+                        <td>{{ categorie.reference }}</td>
+                        <td>{{ categorie.descriptionCateg }}</td>
+                        <td>{{ categorie.sousType.descrSousType }}</td>
+                        <td>
+                            <a href="{{ path('categorie_edit', {'id': categorie.id}) }}" class="btn btn-info">Editer</a>
+                            <a href="{{ path('categorie_delete', {'id': categorie.id}) }}" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr align="center">
+                        <td colspan="3">Aucun matériel</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include "partials/footer.html.twig" %}
+{% endblock %}

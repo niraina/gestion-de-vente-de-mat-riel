@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Categorie;
 use App\Entity\SousType;
 use App\Form\SousTypeType;
+use App\Repository\CategorieRepository;
 use App\Repository\SousTypeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,6 +48,17 @@ class SousTypeController extends AbstractController
         return $this->render('sous_type/new.html.twig', [
             'sous_type' => $sousType,
             'form' => $form->createView(),
+        ]);
+    }
+    
+    /**
+     * @Route("/{materiels}", name="sous_type_show", methods={"GET"})
+     
+     */
+    public function show(Categorie $categorie, CategorieRepository $categorieRepository){
+        $achats = $categorieRepository->findByCode($categorie->getMateriels());
+        return $this->render('sous_type/show.html.twig', [
+            'achats' => $achats,
         ]);
     }
 

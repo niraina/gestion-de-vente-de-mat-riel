@@ -47,4 +47,14 @@ class CategorieRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findByMateriels($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.materiels = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

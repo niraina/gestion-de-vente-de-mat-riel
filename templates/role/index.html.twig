@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des roles{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h3 class="text-center mt-3">Liste des roles</h3>
+        <a href="{{ path('role_new') }}" class="btn btn-primary mb-2">Nouveau</a>
+        {% include "partials/notification.html.twig" %}
+        
+        <table class="table" id="example">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for role in roles %}
+                    <tr>
+                        <td>{{ role.nomRoleFormatted | title }}</td>
+                        <td>
+                            <a href="{{ path('role_edit', {'id': role.id}) }}" class="btn btn-info">Editer</a>
+                            <a href="{{ path('role_delete', {'id': role.id}) }}" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr align="center">
+                        <td colspan="2">Aucun role</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include "partials/footer.html.twig" %}
+{% endblock %}
